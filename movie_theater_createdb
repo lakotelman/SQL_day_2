@@ -1,0 +1,43 @@
+CREATE TABLE IF NOT EXISTS customer( 
+	customer_id SERIAL PRIMARY KEY, 
+	payment_status BOOL
+); 
+
+CREATE TABLE IF NOT EXISTS concession( 
+	concession_id SERIAL PRIMARY KEY, 
+	total FLOAT, 
+	item_name VARCHAR(250), 
+	customer_id INTEGER, 
+	FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
+); 
+
+CREATE TABLE IF NOT EXISTS movie(
+movie_id SERIAL PRIMARY KEY, 
+	movie_title VARCHAR(250), 
+	movie_description VARCHAR(250)
+);
+
+--this got a little messy because there is no datetime datatype with postgres
+CREATE TABLE IF NOT EXISTS show_time(
+show_time_id SERIAL PRIMARY KEY,
+show_date DATE,
+show_time TIME,
+movie_id INTEGER,
+theater_id INTEGER,
+FOREIGN KEY(movie_id) REFERENCES movie(movie_id)
+);
+
+
+CREATE TABLE IF NOT EXISTS ticket( 
+	ticket_id SERIAL PRIMARY KEY,
+	price FLOAT,
+	show_time INTEGER,
+	customer_id INTEGER,
+	FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
+	FOREIGN KEY(show_time) REFERENCES show_time(show_time_id) 
+);
+
+CREATE TABLE IF NOT EXISTS theater(
+	theater_id SERIAL PRIMARY KEY,
+	theater_name INTEGER
+)

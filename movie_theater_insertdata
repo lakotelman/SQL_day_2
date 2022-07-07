@@ -1,0 +1,121 @@
+--Customer
+INSERT INTO customer(
+	customer_id,
+	payment_status
+) VALUES (
+	1,
+	'false');
+
+INSERT INTO customer(
+	payment_status
+) VALUES (
+	'true');
+
+INSERT INTO customer(
+	payment_status
+) VALUES (
+	'true');
+	
+INSERT INTO customer(
+	payment_status
+) VALUES (
+	'true');
+
+-- DELETE FROM customer
+-- WHERE customer_id = 4;
+
+--Concessions
+INSERT INTO concession(
+concession_id, 
+total, 
+item_name, 
+customer_id
+) VALUES (
+1, 
+10.99,
+'popcorn',
+1
+),
+(
+2, 
+10.99,
+'popcorn',
+2
+),(
+3, 
+10.99,
+'popcorn',
+3
+);
+
+SELECT * 
+FROM concession;
+
+--Movies
+INSERT INTO movie(
+movie_id, 
+movie_title,
+movie_description
+) VALUES (
+1, 
+'SQL: The Nightmare Begins', 
+'A horrifying tale of manual data entry and death.'
+), 
+(
+2, 
+'SQL: The Prequel', 
+'Look into the past and see the monster who created this monster.');
+
+--Theater
+INSERT INTO theater ( 
+theater_id, 
+theater_name
+) VALUES (
+1,
+1
+), (
+2, 
+2
+);
+
+--Showtime
+INSERT INTO show_time(
+	show_time_id, 
+	show_date, 
+	show_time, 
+	movie_id, 
+	theater_id
+) VALUES (
+1, 
+'05-13-2022',
+'13:00:00',
+1,
+1
+),(
+2, 
+'05-13-2022',
+'13:00:00',
+1,
+2
+);
+
+SELECT * 
+from show_time
+
+--Ticket
+INSERT INTO ticket (
+ticket_id, 
+price, 
+show_time, --I probably should have called this show_time_id because that is referring to.
+customer_id
+) VALUES (
+1, 
+100.00, 
+1, 
+1
+),(
+2, 
+100.00,
+1, 
+2
+)
